@@ -1,0 +1,109 @@
+<DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="cssIOT/registration.css" rel="stylesheet">
+<link href="useImage/realfileFiles.ico" type="image" rel="icon" />
+<title>IOT</title>
+<style>
+::placeholder {
+  color: #454545;
+  opacity: 1; /* Firefox */
+}
+</style>
+</head>
+<body>
+	<div class="login-box">
+<img src="avatar.png" class="avatar">
+<h1>Register Here</h1>
+<form action="#" method="post" >
+<p>User Name</p>
+<input type="text" name="cname" id="uname" placeholder="Enter the username " autocomplete="off" required />
+<p>Gender</p>
+<input type="text" name="cgender" id="gender" placeholder="Enter the Gender " autocomplete="off" required />
+<p>Email</p>
+<input type="email" name="cemail" id="email" placeholder="Enter Useremail" required autocomplete="on" required />
+<p>Product Number</p>
+<input type="text" name="cpronum" id="prono" placeholder="Enter the Product number " autocomplete="off" required />
+<p>Mobile Number</p>
+<input type="number" name="cmobile" id="mobile" placeholder="Enter the Mobile Number " autocomplete="off" required />
+<p>Password</p>
+<input type="password" name="cpassword" id="pass" placeholder="Enter your password" required />
+<br><input type="submit" name="submit" id="submit" value="Register"   /><br/>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="index.html">Login</a>    &nbsp; &nbsp; &nbsp; &nbsp;<a href="registration.html">Forget Password</a>
+</form>
+</div>
+</body>
+
+<script src="jquery.js"></script>
+<script>
+			
+			
+				$(document).ready(function(){
+				$('#submit').click(function(){
+				
+				var uname= $('#uname').val();
+				var gender= $('#gender').val();
+				var email= $('#email').val();
+				var mobile= $('#mobile').val();
+				var pass= $('#pass').val();
+				var pronum=$('#prono').val();
+					
+				if(uname=="")
+				{
+					alert("Please enter the Username");
+					return false;
+				}
+				var s=uname.substring(0,1);
+				if(isNaN(s)==false)
+				{
+					alert("First Name should be Letter ");
+					return false;
+				}
+				
+				if((gender=="Male" || gender=="Female")==false)
+				{
+					alert("Enter only Male or Female words");
+					return false;
+				}
+				
+				if(mobile.length != 10)
+				{
+					alert("Enter only 10 digits Mobile number ");
+					return false;
+				}
+				var num=parseInt(mobile.substring(0,1));
+				if(num == 1 || num==2 || num==3 || num==4 || num==5)
+				{
+					alert("First letter of mobile number must be gerther the 5 ");
+					return false;
+				}
+				if((pass.length >= 6 && pass.length < 13)==false)
+				{
+					alert("Password should be 6 to 12 words ");
+					return false;
+				}
+				if(email.indexOf('@') <= 0)
+				{
+					alert("Invalid Email");
+					return false;
+				}
+				if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.'))
+				{
+					alert("Invalid Email");
+					return false;
+				}
+				if(pronum.length==0)
+				{
+					alert("Enter the Product Number !!!!");
+					return false;
+				}
+
+				});
+			});
+
+</script>
+
+
+</html>

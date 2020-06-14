@@ -1,0 +1,80 @@
+<DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="cssIOT/login.css" rel="stylesheet">
+<link href="useImage/realfileFiles.ico" type="image" rel="icon" />
+<title>IOT</title>
+<style>
+::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+#captcha{
+	::placeholder {
+  color: green;
+  opacity: 1; /* Firefox */
+  }
+	
+}
+</style>
+</head>
+<body>
+<div class="login-box">
+<img src="avatar.png" class="avatar">
+<h1>Login Here</h1>
+<form action="LoginValidation.php" method="post">
+<p>Email</p>
+<input type="email" name="cemail" placeholder="Email or Password Incorrect" required autocomplete="on" />
+<p>Password</p>
+<input type="password" name="cpassword" placeholder="Enter your Incorrect" required />
+<img src="Captcha.php" height="100px" width="250px" />
+<input type="text"  id="captcha" onblur="validateCatcha()" placeholder="Enter number Captcha" required />
+<h4 id="h1"></h4>
+
+
+<br><input type="submit" name="submit" value="login"><br/>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="Registration.php">Registration</a>    &nbsp; &nbsp; &nbsp; &nbsp;<a href="ForgotPassword.php">Forgot password</a>
+</form>
+</div>
+
+<script src="jquery.js"></script>
+<script>
+	function validateCatcha()
+	{
+		$(document).ready(function(){
+			var capta=$('#captcha').val();
+			if(capta!="")
+			{
+				$.ajax({
+					url:"CaptchaTest.php",
+					type:"post",
+					data:{capta:capta},
+					success:function(data,status)
+					{
+						if(data=="Incorrect Captcha")
+						{
+							$('#h1').html(data);
+							$('#h1').css("color","red");
+							return false;	
+						}
+						else
+						{
+							$('#h1').html("Captcha OK");
+							$('#h1').css("color","green");	
+						}
+					}
+				
+				});
+			}
+		
+		
+	});
+	}
+
+</script>
+
+</body>
+</html>
